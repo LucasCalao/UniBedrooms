@@ -20,4 +20,22 @@ Universidade Nova de Lisboa
 Caparica
 1
 Quarto individual com casa de banho privada. Janela orientada a poente.
+IQ NOVA-RFS-Q101 rgomes
+Residencia Frausto da Silva
+Universidade Nova de Lisboa
+Caparica
+1
+Quarto individual repetido.
+IQ NOVA-RFS-Q102 aantunes
+Residencia Frausto da Silva
+Universidade Nova de Lisboa
+Caparica
+1
+Gerente falso
+IQ NOVA-RFS-Q102 rgomes
+Residencia Frausto da Silva
+Universidade de Evora
+Caparica
+1
+Universidade errada
 XS
