@@ -1,0 +1,23 @@
+# Exemplo de comandos v1.0
+teste
+IE aalmeida Antonio Almeida
+19 Leiria
+Universidade Nova de Lisboa
+IE aalmeida Antonio A 
+19 Leiria
+UNL
+DE aalmeida
+DE ccorreia
+IG rgomes Raquel Gomes
+Universidade Nova de Lisboa
+IG rgomes Raquel Gomes
+Universidade Nova de Lisboa
+DG rgomes
+DG aantunes
+IQ NOVA-RFS-Q101 rgomes
+Residencia Frausto da Silva
+Universidade Nova de Lisboa
+Caparica
+1
+Quarto individual com casa de banho privada. Janela orientada a poente.
+XS
