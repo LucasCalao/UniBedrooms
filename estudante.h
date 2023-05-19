@@ -33,4 +33,6 @@ void retiraCandidaturaEstudante(estudante e, quarto q);
 
 int estudanteTemCandidaturaQuarto(estudante e, quarto q);
 
+void eliminaCandidaturasEstudante(estudante e, quarto q);
+
 #endif // _H_ESTUDANTE

@@ -151,12 +151,9 @@ void criaCandidaturaQuarto(quarto q, estudante e){
 
 int temCandidaturaEstudanteQuarto(quarto q, estudante e){
 
-    iterador myIt;
-
     for(int i=0; i<tamanhoSequencia(q->candidatos);i++){
-        myIt = iteradorSequencia(q->candidatos);
-        estudante aux = seguinteIterador(myIt);
-        if(loginEstudante(e)==loginEstudante(aux))
+        estudante aux = (estudante) elementoPosSequencia(q->candidatos,i);
+        if(!strcmp(loginEstudante(e),loginEstudante(aux)))
             return 1;
     }
     return 0;
@@ -165,6 +162,14 @@ int temCandidaturaEstudanteQuarto(quarto q, estudante e){
 int existeCandidaturasQuarto(quarto q){
 
     return tamanhoSequencia(q->candidatos);
+
+}
+
+void removeCandidaturasQuarto(quarto q){
+
+    for(int i=0;i<tamanhoSequencia(q->candidatos);i++){
+        removePosSequencia(q->candidatos,i);
+    }
 
 }
 

@@ -28,6 +28,8 @@ void insereQUarto(unibedrooms ub, char *linha);
 void consultaDadosQuarto(unibedrooms ub, char *linha);
 void modificaEstadoQuarto(unibedrooms ub, char *linha);
 void insereCandidatura(unibedrooms ub, char *linha);
+void removeQuarto(unibedrooms ub, char *linha);
+void aceitaCandidatura(unibedrooms ub, char *linha);
 
 void destroiUb(unibedrooms ub);
 
@@ -75,7 +77,14 @@ void interpretador(unibedrooms ub){
             modificaEstadoQuarto(ub,linha);   
 
         }else if(strcmp(cmd, "IC") == 0){
-            insereCandidatura(ub,linha);            
+            insereCandidatura(ub,linha);   
+
+        }else if(strcmp(cmd, "RQ") == 0){
+            removeQuarto(ub,linha);    
+
+        }else if(strcmp(cmd, "AC") == 0){
+            aceitaCandidatura(ub,linha);    
+
         }
         else{
             if(cmd[0]=='\0')
@@ -177,10 +186,10 @@ void insereQUarto(unibedrooms ub, char *linha){
 
     char nome[50], comando[MAX_COMANDO], login[50], localidade[50], universidade[50],descricao[200],codigo[50];
     int andar=0;
-    char buffer[50];
+    char buffer[200];
 
     sscanf(linha, "%s %s %[^\n]", comando, codigo, login);
-    codigo[strlen(codigo)-1] = '\0';
+    codigo[strlen(codigo)] = '\0';
     login[strlen(login)-1] = '\0';
 
     fgets(buffer, 50, stdin);
@@ -202,7 +211,7 @@ void insereQUarto(unibedrooms ub, char *linha){
     sscanf(buffer, "%[^\n]", descricao);
     descricao[strlen(descricao)-1] = '\0';
 
-    //printf("%s:%s:%s:%s:%s:%d:%s:",codigo,login,nome,universidade,localidade,andar,descricao);
+    //printf("\n\n\nDados lidos do quarto:%s:%s:%s:%s:%s:%d:%s:",codigo,login,nome,universidade,localidade,andar,descricao);
 
     if(existeQuarto(ub,codigo))
         printf("Quarto existente.\n\n");
@@ -221,7 +230,9 @@ void consultaDadosQuarto(unibedrooms ub, char *linha){
     char comando[MAX_COMANDO], codigo[50];
 
     sscanf(linha, "%s %[^\n]", comando, codigo);
-    codigo[strlen(codigo)] = '\0';
+    codigo[strlen(codigo)-1] = '\0';
+
+    //printf("\n\nLi:%s:",codigo);
 
     if(!existeQuarto(ub,codigo))
         printf("Inexistencia do quarto referido.\n\n");
@@ -236,11 +247,20 @@ void modificaEstadoQuarto(unibedrooms ub, char *linha){
     char comando[MAX_COMANDO], codigo[50], login[50], estado[10];
 
     sscanf(linha, "%s %s %s %[^\n]", comando, codigo,login,estado);
-    codigo[strlen(codigo)-1] = '\0';
-    login[strlen(login)-1] = '\0';
-    estado[strlen(estado)] = '\0';
+    codigo[strlen(codigo)] = '\0';
+    login[strlen(login)] = '\0';
+    estado[strlen(estado)-1] = '\0';
 
-    mudaEstadoQuartoUni(ub,codigo,estado);
+    if (!existeQuarto(ub,codigo))
+        printf("Inexistencia do quarto referido.\n\n");
+    else if(strcmp(login,loginGerenteUni(ub,login)))
+            printf("Operacao nao autorizada.\n\n");
+    else if(temCandidaturasAtivas(ub,codigo) && !strcmp(estado,"ocupado"))
+        printf("Candidaturas ativas.\n\n");
+    else{
+        mudaEstadoQuartoUni(ub,codigo,estado);
+        printf("Estado de quarto atualizado.\n\n");
+    }
 
 }
 
@@ -248,20 +268,20 @@ void removeQuarto(unibedrooms ub, char *linha){
 
     char comando[MAX_COMANDO], codigo[50], login[50];
 
-    if(sscanf(linha, "%s %s %[^\n]", comando, codigo,login) != 3){
-        printf("Comando errado\n");
-    }
+    sscanf(linha, "%s %s %[^\n]", comando, codigo,login);
+    codigo[strlen(codigo)] = '\0';
+    login[strlen(login)-1] = '\0';
+
     if(!existeQuarto(ub,codigo))
         printf("Inexistencia do quarto referido.\n\n");
     else{
         gerente g = daGerenteUniBedrooms(ub,codigo);
         if(strcmp(login,loginGerente(g)))
             printf("Operacao nao autorizada.\n\n");
-        else{
-            quarto q = daQuartoUniBedrooms(ub,codigo);
-            if(temCandidaturasAtivas(ub,q))
+        else if(temCandidaturasAtivas(ub,codigo))
             printf("Candidaturas activas.\n\n");
-        }
+        else
+            removeQuartoUni(ub,codigo);
     }
 }
 
@@ -269,27 +289,60 @@ void insereCandidatura(unibedrooms ub, char *linha){
 
     char comando[MAX_COMANDO], codigo[50], login[50];
 
-    if(sscanf(linha, "%s %s %[^\n]", comando, login, codigo) != 3){
-        printf("Comando errado\n");
-    }
+    sscanf(linha, "%s %s %[^\n]", comando, login, codigo);
+    codigo[strlen(codigo)-1] = '\0';
+    login[strlen(login)] = '\0';
+
+    estudante e = daEstudanteUniBedrooms(ub,login);
+    quarto q = daQuartoUniBedrooms(ub,codigo);
+    if(!existeEstudante(ub,login))
+        printf("Inexistencia do estudante referido.\n\n");
+    else if (nrCandidaturasEstudante(e)>10)
+        printf("Operacao nao autorizada.\n\n");
+    else if(!existeQuarto(ub,codigo))
+        printf("Inexistencia do quarto referido.\n\n");
+    else if(!strcmp(estadoQuarto(q),"ocupado"))
+        printf("Quarto ocupado.\n\n");
+    else if(temCandidaturaEstudanteQuarto(q,e))
+        printf("Candidatura existente.\n\n");
     else{
-        estudante e = daEstudanteUniBedrooms(ub,login);
-        quarto q = daQuartoUniBedrooms(ub,codigo);
-        if(!existeEstudante(ub,login))
-            printf("Inexistencia do estudante referido.\n\n");
-        else if (nrCandidaturasEstudante(e)>10)
-            printf("Operacao nao autorizada.\n\n");
-        else if(!existeQuarto(ub,codigo))
-            printf("Inexistencia do quarto referido.\n\n");
-        else if(strcmp(estadoQuarto(q),"ocupado"))
-            printf("Quarto ocupado");
-        else if(temCandidaturaEstudanteQuarto(q,e))
-            printf("Candidatura existente\n\n");
-        else{
-            insereCandidaturaUni(ub,codigo,login);
-            printf("Registo de candidatura executado.\n\n");
-        }
+        insereCandidaturaUni(ub,codigo,login);
+        printf("Registo de candidatura executado.\n\n");
     }
+}
+
+void aceitaCandidatura(unibedrooms ub, char *linha){
+
+    char comando[MAX_COMANDO], codigo[50], loginGerente[50], loginEstudante[50];
+
+    sscanf(linha, "%s %s %s %[^\n]", comando,  codigo,loginGerente,loginEstudante);
+    loginGerente[strlen(loginGerente)] = '\0';
+    codigo[strlen(codigo)] = '\0';
+    loginEstudante[strlen(loginEstudante)-1] = '\0';
+
+
+    //printf("\n\nLi:%s base de dados:%s",codigo,codigoQuartoUni(ub,codigo));
+    //estudante e = daEstudanteUniBedrooms(ub,loginGerente);
+    //quarto q = daQuartoUniBedrooms(ub,codigo);
+    //printf("\n\nLi:%s base de dados:%s",codigo,codigoQuarto(q));
+    if(!existeQuarto(ub,codigo)){
+        printf("Inexistencia do quarto referido.\n\n");
+    }
+    else if(strcmp(loginGerente,loginGerenteUni(ub,loginGerente))){
+        printf("Operacao nao autorizada.\n\n");
+    }
+    else {
+        estudante e = daEstudanteUniBedrooms(ub,loginEstudante);
+        quarto q = daQuartoUniBedrooms(ub,codigo);
+        if(!temCandidaturaEstudanteQuarto(q,e))
+            printf("Inexistencia da candidatura referida.\n\n");
+    }
+    /*else {
+        mudaEstadoQuartoUni(ub,codigo,"ocupado");
+        eliminaCandidaturasEstudante(e,q);
+        removeCandidaturasQuarto(q);
+        retiraCandidaturaEstudante(e,q);
+    }*/
 }
 
 

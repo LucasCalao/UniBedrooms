@@ -38,7 +38,13 @@ void mudaEstadoQuartoUni(unibedrooms ub, char *codigo, char *estado);
 
 void insereCandidaturaUni(unibedrooms ub, char *codigo, char *login);
 
-int temCandidaturasAtivas(unibedrooms ub, quarto q);
+int temCandidaturasAtivas(unibedrooms ub, char *codigo);
+
+char *loginGerenteUni(unibedrooms ub,char *login);
+
+void removeQuartoUni(unibedrooms ub, char *codigo);
+
+char *codigoQuartoUni(unibedrooms ub, char *codigo);
 
 //int existeLogin(unibedrooms ub,char *login);
 

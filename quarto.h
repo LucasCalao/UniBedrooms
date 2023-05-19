@@ -38,4 +38,6 @@ int temCandidaturaEstudanteQuarto(quarto q, estudante e);
 
 int existeCandidaturasQuarto(quarto q);
 
+void removeCandidaturasQuarto(quarto q);
+
 #endif // _H_quarto

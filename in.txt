@@ -38,4 +38,15 @@ Universidade de Evora
 Caparica
 1
 Universidade errada
+DQ NOVA-RFS-Q101
+DQ NOVA-RFS-Q102
+MQ NOVA-RFS-Q101 rgomes ocupado
+MQ NOVA-RFS-Q101 aantunes livre
+MQ NOVA-RFS-Q101 rgomes livre
+RQ NOVA-RFS-Q901 jpsousa
+MQ NOVA-RFS-Q101 aantunes
+IC aalmeida NOVA-RFS-Q101
+IC aalmeida NOVA-RFS-Q101
+AC NOVA-RFS-Q101 rgomes aalmeida
+AC NOVA-RFS-Q901 aantunes ccorreia
 XS

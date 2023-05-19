@@ -119,9 +119,34 @@ void insereCandidaturaUni(unibedrooms ub, char *codigo, char *login){
 
 }
 
-int temCandidaturasAtivas(unibedrooms ub, quarto q){
+int temCandidaturasAtivas(unibedrooms ub, char *codigo){
 
+    quarto q = daQuartoUniBedrooms(ub,codigo);
     return existeCandidaturasQuarto(q);
+
+}
+
+char *loginGerenteUni(unibedrooms ub,char *login){
+
+    if(existeGerente(ub,login)){
+        gerente g = daGerenteUniBedrooms(ub,login);
+        return loginGerente(g);
+    }
+    return "nada";
+}
+
+char *codigoQuartoUni(unibedrooms ub, char *codigo){
+
+    if(existeGerente(ub,codigo)){
+        quarto q = daQuartoUniBedrooms(ub,codigo);
+        return codigoQuarto(q);
+    }
+    return "nada";
+}
+
+void removeQuartoUni(unibedrooms ub, char *codigo){
+
+    removeElemDicionario(ub->quartos,codigo);
 
 }
 
