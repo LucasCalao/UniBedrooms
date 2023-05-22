@@ -1,4 +1,10 @@
-> Comando invalido.
+> 
+
+> 
+
+> 
+
+> 
 
 > Comando invalido.
 
@@ -51,6 +57,5 @@ livre
 
 > Candidatura existente.
 
-> > Inexistencia do quarto referido.
+> Obrigado. Ate a proxima.
 
-> 

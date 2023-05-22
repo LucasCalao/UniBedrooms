@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "iterador.h"
 #include "dicionario.h"
 #include "sequencia.h"
 #include "estudante.h"
@@ -160,9 +161,10 @@ int temCandidaturaEstudanteQuarto(quarto q, estudante e){
 }
 
 int existeCandidaturasQuarto(quarto q){
-
-    return tamanhoSequencia(q->candidatos);
-
+    
+    if(tamanhoSequencia(q->candidatos)>0)
+        return 1;
+    return 0;
 }
 
 void removeCandidaturasQuarto(quarto q){
@@ -171,6 +173,12 @@ void removeCandidaturasQuarto(quarto q){
         removePosSequencia(q->candidatos,i);
     }
 
+}
+
+iterador daIteradorCandidaturasQuarto(quarto q){
+
+    return iteradorSequencia(q->candidatos);
+    
 }
 
 /*

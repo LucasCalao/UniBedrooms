@@ -2,6 +2,7 @@
 
 #define _H_QUARTO
 
+#include "iterador.h"
 #include "gerente.h"
 #include "estudante.h"
 
@@ -39,5 +40,7 @@ int temCandidaturaEstudanteQuarto(quarto q, estudante e);
 int existeCandidaturasQuarto(quarto q);
 
 void removeCandidaturasQuarto(quarto q);
+
+iterador daIteradorCandidaturasQuarto(quarto q);
 
 #endif // _H_quarto
