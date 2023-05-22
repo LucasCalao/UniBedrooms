@@ -53,6 +53,7 @@ void interpretador(unibedrooms ub){
         sscanf(linha, "%2s", cmd);
 
         if(strcmp(cmd, "XS") == 0){
+            printf("Obrigado. Ate a proxima.\n\n");
             break;
         }
         else if (strcmp(cmd, "IE") == 0) {
@@ -89,7 +90,7 @@ void interpretador(unibedrooms ub){
         else{
             if(cmd[0]=='\0')
                 putchar('\n');
-            printf("Comando invalido.\n\n");
+            printf("comando invalido.\n\n");
         }
         //strcpy(cmd, para_maisculas(cmd));
     }
@@ -335,14 +336,15 @@ void aceitaCandidatura(unibedrooms ub, char *linha){
         estudante e = daEstudanteUniBedrooms(ub,loginEstudante);
         quarto q = daQuartoUniBedrooms(ub,codigo);
         if(!temCandidaturaEstudanteQuarto(q,e))
-            printf("Inexistencia da candidatura referida.\n\n");
+            printf("Inexistencia da candidatura referida.\n\n");   
+        else {
+            mudaEstadoQuartoUni(ub,codigo,"ocupado");
+            retiraCandidaturaEstudante(e,q);
+            eliminaCandidaturasEstudante(e,q);
+            removeCandidaturasQuarto(q);           
+            printf("Aceitacao de candidatura executada.\n\n");
+        }
     }
-    /*else {
-        mudaEstadoQuartoUni(ub,codigo,"ocupado");
-        eliminaCandidaturasEstudante(e,q);
-        removeCandidaturasQuarto(q);
-        retiraCandidaturaEstudante(e,q);
-    }*/
 }
 
 

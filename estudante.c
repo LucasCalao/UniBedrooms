@@ -103,12 +103,15 @@ int registaCandidaturaEstudante(estudante e, quarto q){
 }
 
 void retiraCandidaturaEstudante(estudante e, quarto q){
-    for(int i=0;i<e->nrCandidaturas;i++)
-        if(codigoQuarto(q)==codigoQuarto(e->candidaturas[i]))
+    for(int i=0;i<e->nrCandidaturas;i++){
+        if(!strcmp(codigoQuarto(q),codigoQuarto(e->candidaturas[i])))
+        {
             for(int j=0;j<e->nrCandidaturas;j++){
                 e->candidaturas[j+1]=e->candidaturas[j];    
                 e->nrCandidaturas--;
             }
+        }
+    }
 }
 
 void eliminaCandidaturasEstudante(estudante e, quarto q){
