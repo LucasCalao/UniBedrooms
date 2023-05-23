@@ -33,6 +33,8 @@ int andarQuarto(quarto q);
 
 void mudaEstadoQuarto(quarto q, char *estado);
 
+char *loginQuarto(quarto q);
+
 void criaCandidaturaQuarto(quarto q, estudante e);
 
 int temCandidaturaEstudanteQuarto(quarto q, estudante e);

@@ -20,11 +20,11 @@ struct _quarto{
     char *universidade;
     char *localidade;
     char *descricao;
-    char *loginGerente; //prof disse para meter um apontador para gerente
+    char *login; //prof disse para meter um apontador para gerente
     char *estado;
 };
 
-quarto criaQuarto(char *codigo, char *loginGerente, char *nome, char *universidade, char *localidade, char *descricao, int andar){
+quarto criaQuarto(char *codigo, char *login, char *nome, char *universidade, char *localidade, char *descricao, int andar){
 
     quarto q = (quarto) malloc(sizeof(struct _quarto));
     if(q==NULL)
@@ -89,8 +89,22 @@ quarto criaQuarto(char *codigo, char *loginGerente, char *nome, char *universida
     }
     strcpy(q->estado,"livre");
 
+    q->login = (char*) malloc(sizeof(char)*30);
+    if(q->login==NULL){
+        free(q->estado);
+        free(q->descricao);
+        free(localidade);
+        free(q->universidade);
+        free(q->nome);
+        free(q->codigo);
+        free(q);
+        return NULL;
+    }
+    strcpy(q->login,login);
+
     q->candidatos = criaSequencia(MAX_CANDIDATOS);
     if(q->candidatos==NULL){
+        free(q->login);
         free(q->estado);
         free(q->descricao);
         free(localidade);
@@ -105,7 +119,7 @@ quarto criaQuarto(char *codigo, char *loginGerente, char *nome, char *universida
 }
 
 void destroiQuarto (quarto q){
-    free(q->estado); free(q->nome); free(q->codigo); free(q->universidade); free(q->localidade); free(q);
+    free(q->login);free(q->estado); free(q->descricao);free(q->nome); free(q->codigo); free(q->universidade); free(q->localidade); destroiSequencia(q->candidatos);free(q);
 }
 
 void destroiGenquarto (void * q){
@@ -136,6 +150,10 @@ char *estadoQuarto(quarto q){
     return q->estado;
 }
 
+char *loginQuarto(quarto q){
+    return q->login;
+}
+
 int andarQuarto(quarto q){
     return q->andar;
 }
@@ -146,16 +164,23 @@ void mudaEstadoQuarto(quarto q, char *estado){
 
 void criaCandidaturaQuarto(quarto q, estudante e){
 
-    adicionaPosSequencia(q->candidatos,e,tamanhoSequencia(q->candidatos));
+    adicionaPosSequencia(q->candidatos,e,(tamanhoSequencia(q->candidatos)+1));
+    //printf("NOOB:%s\n\n\n",nomeEstudante(elementoPosSequencia(q->candidatos,tamanhoSequencia(q->candidatos))));
 
 }
 
 int temCandidaturaEstudanteQuarto(quarto q, estudante e){
 
+    //printf("1-%s\n",loginEstudante(e));
+    //printf("%d",tamanhoSequencia(q->candidatos));
     for(int i=0; i<tamanhoSequencia(q->candidatos);i++){
-        estudante aux = (estudante) elementoPosSequencia(q->candidatos,i);
+        //printf("ENtrei no for\n\n");
+        estudante aux = (estudante) elementoPosSequencia(q->candidatos,i+1);
+        //printf("2-%s:%s\n",loginEstudante(e),loginEstudante(aux));
         if(!strcmp(loginEstudante(e),loginEstudante(aux)))
             return 1;
+        else
+            return 0;       
     }
     return 0;
 }
@@ -177,7 +202,9 @@ void removeCandidaturasQuarto(quarto q){
 
 iterador daIteradorCandidaturasQuarto(quarto q){
 
-    return iteradorSequencia(q->candidatos);
+    iterador myIt = iteradorSequencia(q->candidatos);
+
+    return (myIt);
     
 }
 

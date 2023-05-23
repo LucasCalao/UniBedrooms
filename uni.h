@@ -46,6 +46,10 @@ void removeQuartoUni(unibedrooms ub, char *codigo);
 
 char *codigoQuartoUni(unibedrooms ub, char *codigo);
 
+int temCandidaturaEstudanteQuartoUni(unibedrooms ub, char *codigo, char *login);
+
+int existeLoginQuartoUni(unibedrooms ub, char *codigo,char *login);
+
 //int existeLogin(unibedrooms ub,char *login);
 
 void destroiTudoUb(unibedrooms ub);

@@ -126,11 +126,27 @@ int temCandidaturasAtivas(unibedrooms ub, char *codigo){
 
 }
 
+int temCandidaturaEstudanteQuartoUni(unibedrooms ub, char *codigo, char *login){
+
+    if(!existeEstudante(ub,codigo))
+        return 0;
+    else{
+        quarto q = daQuartoUniBedrooms(ub,codigo);
+        estudante e = daEstudanteUniBedrooms(ub,login);
+
+        if(temCandidaturaEstudanteQuarto(q,e) == 1)
+            return 1;
+        else if(temCandidaturaEstudanteQuarto(q,e) == 0)
+            return 0;
+    }
+    return 0;
+}
+
 char *loginGerenteUni(unibedrooms ub,char *login){
 
     if(existeGerente(ub,login)){
         gerente g = daGerenteUniBedrooms(ub,login);
-        return loginGerente(g);
+        return daLoginGerente(g);
     }
     return "nada";
 }
@@ -150,12 +166,16 @@ void removeQuartoUni(unibedrooms ub, char *codigo){
 
 }
 
-/*int existeLoginEstudante(unibedrooms ub,char *login){
+int existeLoginQuartoUni(unibedrooms ub, char *codigo,char *login){
 
-    printf("Entrei no existeLogin\n\n");
-    return existeElemDicionario()
+    quarto q = daQuartoUniBedrooms(ub,codigo);
+    //printf("loginquarto:%s;loginGerente:%s\n\n",loginQuarto(q),login);
 
-}*/
+    if(!strcmp(loginQuarto(q),login))
+        return 1;
+    else
+        return 0;
+}
 
 void destroiTudoUb(unibedrooms ub){
 

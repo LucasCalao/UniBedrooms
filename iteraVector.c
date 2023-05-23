@@ -36,5 +36,3 @@ int temSeguinteIterador(iterador it){
 void * seguinteIterador(iterador it){
 	return it->vector[it->corrente++];
 }
-
-

@@ -59,11 +59,12 @@ livre
 
 > Registo de candidatura executado.
 
-> Candidatura existente.
+> Registo de candidatura executado.
 
 > Comando invalido.
 
 > aalmeida, Antonio Almeida, Universidade Nova de Lisboa
+aalmeida, Antonio Almeida, Universidade Nova de Lisboa
 
 > Inexistencia do quarto referido.
 
@@ -71,7 +72,7 @@ livre
 
 > Inexistencia do quarto referido.
 
-> Inexistencia de candidaturas.
+> aalmeida, Antonio Almeida, Universidade Nova de Lisboa
 
 > Obrigado. Ate a proxima.
 

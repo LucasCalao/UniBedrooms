@@ -12,7 +12,7 @@ void destroiGenGerente (void * g);
 
 char *nomeGerente(gerente g);
 
-char *loginGerente(gerente g);
+char *daLoginGerente(gerente g);
 
 char *universidadeGerente(gerente g);
 

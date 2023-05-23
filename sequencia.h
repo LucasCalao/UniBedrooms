@@ -1,8 +1,7 @@
 #ifndef _H_SEQUENCIA
 #define _H_SEQUENCIA
 
-#include "iterador.h"
-
+//#include "iterador.h" TIRAR ISTO DAQUI NAO HA INCLUDES NOS .h
 /* Tipo de dados: sequencia ---> s1, s2, s3 ....*/
 typedef struct _sequencia * sequencia;
 
@@ -74,6 +73,17 @@ Retorno:
 Pre-condicoes: s != NULL && i>0 && i<= tamanhoSequencia(s)+1
 ***********************************************/
 void adicionaPosSequencia(sequencia s, void * elem, int i);
+
+/************************************************
+mudaPosSequencia - altera o elemento dado na posicao i da sequencia.
+Parametros:
+	s - sequencia
+	elem - endereco do elemento
+	i - posicao na sequencia
+Retorno:
+condicoes: s != NULL && i>=0 && i<= tamanhoSequencia(s)+1
+************************************************/
+void mudaPosSequencia(sequencia s, void * elem, int i);
 
 /***********************************************
 removePosSequencia - Remove o elemento na posicao i da sequencia.

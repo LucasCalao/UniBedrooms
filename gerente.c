@@ -72,7 +72,7 @@ char *nomeGerente(gerente g){
     return g->nome;
 }
 
-char *loginGerente(gerente g){
+char *daLoginGerente(gerente g){
     return g->login;
 }
 

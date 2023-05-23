@@ -6,117 +6,91 @@
 struct _sequencia{
 	void * * elems; // apontador para vector de enderecos de elementos
 	int numElems;
-	int capacidade; // capacidade corrente do vectorC:\Users\Germa\Desktop\2�Ano Faculdade\2�SEMESTRE\AED PRATICA\Turma\turma.c
+	int capacidade; // capacidade corrente do vector
 };
 
-void incCapacidadeSequencia(sequencia f){
-    int i;
-    void ** aux = malloc(sizeof(void *) * f->capacidade*2); //duplica
-    for(i = 0 ; i<f->numElems ; i++)
-        aux[i] = f->elems[i];
-    free(f->elems);
-    f->elems = aux;
-    f->capacidade = f->capacidade * 2;
-}
 
 sequencia criaSequencia(int cap){
-
-    sequencia s = (sequencia) malloc (sizeof(struct _sequencia));
-
-	if (s == NULL)
+	sequencia s = (sequencia)malloc(sizeof(struct _sequencia));
+	if(s == NULL) return NULL;
+	s -> elems      =  (void** )malloc(sizeof(void* )* cap);
+	if(s -> elems == NULL){
+        free (s);
         return NULL;
-    //s->elems � um apontador void *
-	s->elems = (void *) malloc (sizeof(void*) * cap); //(void *) � redodante (nao � necessario)
-	if (s->elems == NULL){
-		free(s);
-		return NULL;
 	}
-	s->numElems = 0;
-	s->capacidade = cap;
+	s -> numElems   = 0;
+	s -> capacidade = cap;
 	return s;
 }
 
 
 void destroiSequencia (sequencia s ){
-	//ordem inversa � criacao dos mallocs
 	free(s->elems);
 	free(s);
 }
-// void (*destroi) (void *)
-//apontador para funcao que retorna void e recebe um void*
+
+
 void destroiSeqElems(sequencia s, void (*destroi)(void *) ){
-	int i;
-	for(i = 0; i < s->numElems; i++){
-        destroi(s->elems[i]);
-	}
-	free(s->elems); //liberta a memoria do malloc
-	free(s);
+    for(int i = 0; i < tamanhoSequencia(s); i++)
+        destroi(s -> elems[i]);
+    destroiSequencia(s);
 }
 
 
 int vaziaSequencia(sequencia s){
-    if(s->numElems == 0){
-        	return 1;
-    }
-	return 0;
+	if(!(s -> numElems)) return 1;
+	else return 0; //se tiver vazia return 1 se tiver algo return 0
 
-	//alternativa
-	//return s->numElems == 0 ;
 }
 
 
 int tamanhoSequencia(sequencia s){
-	return s->numElems;
+	return(s -> numElems);
 }
 
 
 void * elementoPosSequencia(sequencia s, int i){
-    return s->elems[i-1];//primeira posicao do elems � 0 mas o primeiro valor de i � 1
+	return(s -> elems[i-1]);//tirei -1
 }
 
-
 void adicionaPosSequencia(sequencia s, void * elem, int i){
+    //i--;
+    int j;
 
-    int k;
-    if(s->capacidade == s->numElems){
-        incCapacidadeSequencia(s); //TPC
-        //i=3 elem=1
-        // initial 6 4 5 9 7 8 0 0 0 0      <-enderecos de memoria de void *
-        // 1st     6 4 5 5 9 7 8 0 0 0
-        // 2nd     6 4[1]5 9 7 8 0 0 0
-    }
-    for(k = s->numElems ; k >= i; k--){
-        s->elems[k] = s->elems[k-1];
+    if(i<=(s->numElems)){
+        for(j = s->numElems; j >= i - 1; j--)
+            s->elems[j] = s->elems[j - 1];
     }
     s->elems[i-1] = elem;
     s->numElems++;
 }
 
+void mudaPosSequencia(sequencia s, void * elem, int i){
+
+    if(i <= (s->numElems)){
+        s->elems[i] = elem;
+    }
+
+}
+
 
 void * removePosSequencia(sequencia s, int i){
-    int j;
-	void *aux = elementoPosSequencia(s,i);
-
-	// seja i = 3
-	// initial   6 4 5 9 7 8 0 0 0 0 numElems = 6
-	//final      6 4 9 7 8 8 0 0 0 0 numElems = 5
-
-    for(j = i; j < s->numElems; j++){
-        s->elems[j-1]=s->elems[j];
+    void *copiaElemento =  (void*)malloc(sizeof(void*));
+	i--; //aqui a sequencia funciona como vetor logo vai ter posicao 0 sendo que quando recebe uma posicao no main e tratado apenas a partir da posicao 1
+    copiaElemento = s -> elems[i];
+    for(; i < s -> numElems; i++){
+        s -> elems[i] = s -> elems[i + 1];
     }
-    s->numElems--;
-    return aux;
+	s -> numElems--;
+	return copiaElemento;
 }
 
 
 iterador iteradorSequencia(sequencia s){
-	//CUIDADO: DEVE DAR AO ITERADOR UMA COPIA DO VECTOR A PERCORRER
-	//
-	//Fazer
+	//CUIDADO DEVE DAR AO ITERADOR UMA COPIA DO VECTOR A PERCORRER
 	int i;
-	void ** aux = (void *) malloc (sizeof(void *) * s->numElems);
-	for(i = 0; i< s->numElems; i++){
-            aux[i]= s->elems[i];
-	}
-	return criaIterador(aux , s->numElems);
+	void ** iteradorS = malloc(sizeof(void *) * s->numElems);
+	for(i = 0; i < s->numElems; i++)
+        iteradorS[i] = s->elems[i];
+	return(criaIterador(iteradorS, s->numElems));
 }
