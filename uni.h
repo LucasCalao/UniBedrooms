@@ -48,9 +48,17 @@ char *codigoQuartoUni(unibedrooms ub, char *codigo);
 
 int temCandidaturaEstudanteQuartoUni(unibedrooms ub, char *codigo, char *login);
 
+/*Funcao que verifica se o login dado corresponde ao login do gerente do
+quarto.
+Retornos: 1- se o login for correto; 0- se o login for incorreto
+*/
 int existeLoginQuartoUni(unibedrooms ub, char *codigo,char *login);
 
 //int existeLogin(unibedrooms ub,char *login);
+
+char *loginQuartoUni(unibedrooms ub, char *codigo);
+
+char *estadoQuartoUni(unibedrooms ub,char *codigo);
 
 void destroiTudoUb(unibedrooms ub);
 

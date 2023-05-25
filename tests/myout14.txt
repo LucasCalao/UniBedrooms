@@ -147,7 +147,8 @@ universidade2
 
 > Registo de candidatura executado.
 
-> Operacao nao autorizada.
+> quarto-g4-8:10
+Operacao nao autorizada.
 
 > Registo de candidatura executado.
 
@@ -564,7 +565,316 @@ estudante2, nomeEstudante2, universidade2
 
 > Inexistencia de candidaturas.
 
+> quarto-g4-8:10
+Operacao nao autorizada.
+
+> 
+
+> 
+
+> 
+
+> quarto-g2-1, residencia do gerente2
+universidade2
+localidade da residencia2
+10
+quarto na residencia do gerente2
+livre
+
+> Inexistencia de candidaturas.
+
+> quarto-g4-9, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+ocupado
+
+> Inexistencia de candidaturas.
+
+> quarto-g4-11, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+ocupado
+
+> Inexistencia de candidaturas.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Operacao nao autorizada.
+
+> Operacao nao autorizada.
+
+> Remocao de quarto executada.
+
+> Remocao de quarto executada.
+
+> Remocao de quarto executada.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Registo de quarto executado.
+
+> quarto-g2-1, residencia do gerente4
+universidade2
+localidade da residencia4
+5
+quarto na residencia do gerente4
+livre
+
+> Operacao nao autorizada.
+
+> Inexistencia de candidaturas.
+
 > Registo de candidatura executado.
+
+> quarto-g2-1, residencia do gerente4
+universidade2
+localidade da residencia4
+5
+quarto na residencia do gerente4
+livre
+
+> estudante5, nomeEstudante5, universidade1
+
+> 
+
+> 
+
+> 
+
+> quarto-g1-1, residencia do gerente1
+universidade1
+localidade da residencia1
+1
+quarto na residencia do gerente1
+ocupado
+
+> quarto-g1-2, residencia do gerente1
+universidade1
+localidade da residencia1
+2
+quarto na residencia do gerente1
+livre
+
+> quarto-g1-3, residencia do gerente1
+universidade1
+localidade da residencia1
+1
+quarto na residencia do gerente1
+livre
+
+> quarto-g2-1, residencia do gerente4
+universidade2
+localidade da residencia4
+5
+quarto na residencia do gerente4
+livre
+
+> quarto-g2-2, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+livre
+
+> quarto-g4-1, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+livre
+
+> quarto-g4-2, residencia do gerente4
+universidade2
+localidade da residencia4
+2
+quarto na residencia do gerente4
+livre
+
+> quarto-g4-3, residencia do gerente4
+universidade2
+localidade da residencia4
+3
+quarto na residencia do gerente4
+livre
+
+> quarto-g4-4, residencia do gerente4
+universidade2
+localidade da residencia4
+4
+quarto na residencia do gerente4
+livre
+
+> quarto-g4-5, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+livre
+
+> quarto-g4-6, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+livre
+
+> quarto-g4-7, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+livre
+
+> quarto-g4-8, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+livre
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia de candidaturas.
+
+> Inexistencia de candidaturas.
+
+> Inexistencia de candidaturas.
+
+> Operacao nao autorizada.
+
+> Inexistencia de candidaturas.
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> Inexistencia de candidaturas.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Operacao nao autorizada.
+
+> Operacao nao autorizada.
+
+> estudante1, nomeEstudante1, 19 anos, localidade1
+universidade1
+
+> estudante2, nomeEstudante2, 20 anos, localidade2
+universidade2
+
+> estudante3, nomeEstudante3, 21 anos, localidade1
+universidade1
+
+> estudante4, nomeEstudante1, 19 anos, localidade2
+universidade2
+
+> estudante5, nomeEstudante5, 19 anos, localidade1
+universidade1
+
+> Inexistencia do estudante referido.
+
+> Inexistencia do gerente referido.
+
+> gerente1, nomeGerente1
+universidade1
+
+> gerente2, nomeEstudante2
+universidade2
+
+> gerente3, nomeGerente3
+universidade3
+
+> gerente4, nomeGerente4
+universidade2
+
+> Inexistencia do gerente referido.
+
+> 
+
+> 
+
+> 
+
+> Inexistencia da candidatura referida.
+
+> quarto-g2-1:10
+Operacao nao autorizada.
+
+> quarto-g2-2:10
+Operacao nao autorizada.
+
+> Registo de quarto executado.
+
+> quarto-g4-12:10
+Operacao nao autorizada.
+
+> Inexistencia de candidaturas.
+
+> Inexistencia de candidaturas.
+
+> Inexistencia de candidaturas.
+
+> Operacao nao autorizada.
+
+> Inexistencia de candidaturas.
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> estudante1, nomeEstudante1, universidade1
+
+> Inexistencia de candidaturas.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
 
 > Obrigado. Ate a proxima.
 

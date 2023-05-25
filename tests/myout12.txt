@@ -566,5 +566,80 @@ estudante2, nomeEstudante2, universidade2
 
 > Registo de candidatura executado.
 
+> 
+
+> 
+
+> 
+
+> quarto-g2-1, residencia do gerente2
+universidade2
+localidade da residencia2
+10
+quarto na residencia do gerente2
+livre
+
+> Inexistencia de candidaturas.
+
+> quarto-g4-9, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+ocupado
+
+> Inexistencia de candidaturas.
+
+> quarto-g4-11, residencia do gerente4
+universidade2
+localidade da residencia4
+1
+quarto na residencia do gerente4
+ocupado
+
+> Inexistencia de candidaturas.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Operacao nao autorizada.
+
+> Operacao nao autorizada.
+
+> Remocao de quarto executada.
+
+> Remocao de quarto executada.
+
+> Remocao de quarto executada.
+
+> Inexistencia do quarto referido.
+
+> Inexistencia do quarto referido.
+
+> Registo de quarto executado.
+
+> quarto-g2-1, residencia do gerente4
+universidade2
+localidade da residencia4
+5
+quarto na residencia do gerente4
+livre
+
+> Operacao nao autorizada.
+
+> Inexistencia de candidaturas.
+
+> Registo de candidatura executado.
+
+> quarto-g2-1, residencia do gerente4
+universidade2
+localidade da residencia4
+5
+quarto na residencia do gerente4
+livre
+
+> estudante5, nomeEstudante5, universidade1
+
 > Obrigado. Ate a proxima.
 

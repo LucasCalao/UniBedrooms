@@ -66,7 +66,7 @@ quarto criaQuarto(char *codigo, char *login, char *nome, char *universidade, cha
 
     q->descricao = (char*) malloc(sizeof(char)*(strlen(descricao)+1));
     if(q->descricao==NULL){
-        free(localidade);
+        free(q->localidade);
         free(q->universidade);
         free(q->nome);
         free(q->codigo);
@@ -80,7 +80,7 @@ quarto criaQuarto(char *codigo, char *login, char *nome, char *universidade, cha
     q->estado = (char*) malloc(sizeof(char)*10);
     if(q->estado==NULL){
         free(q->descricao);
-        free(localidade);
+        free(q->localidade);
         free(q->universidade);
         free(q->nome);
         free(q->codigo);
@@ -93,7 +93,7 @@ quarto criaQuarto(char *codigo, char *login, char *nome, char *universidade, cha
     if(q->login==NULL){
         free(q->estado);
         free(q->descricao);
-        free(localidade);
+        free(q->localidade);
         free(q->universidade);
         free(q->nome);
         free(q->codigo);
@@ -107,7 +107,7 @@ quarto criaQuarto(char *codigo, char *login, char *nome, char *universidade, cha
         free(q->login);
         free(q->estado);
         free(q->descricao);
-        free(localidade);
+        free(q->localidade);
         free(q->universidade);
         free(q->nome);
         free(q->codigo);
@@ -163,41 +163,61 @@ void mudaEstadoQuarto(quarto q, char *estado){
 }
 
 void criaCandidaturaQuarto(quarto q, estudante e){
-
+    
+    //printf("DDDD\n");
     adicionaPosSequencia(q->candidatos,e,(tamanhoSequencia(q->candidatos)+1));
-    //printf("NOOB:%s\n\n\n",nomeEstudante(elementoPosSequencia(q->candidatos,tamanhoSequencia(q->candidatos))));
+    //printf("%s:%s\n",);
 
 }
 
 int temCandidaturaEstudanteQuarto(quarto q, estudante e){
 
-    //printf("1-%s\n",loginEstudante(e));
-    //printf("%d",tamanhoSequencia(q->candidatos));
-    for(int i=0; i<tamanhoSequencia(q->candidatos);i++){
-        //printf("ENtrei no for\n\n");
-        estudante aux = (estudante) elementoPosSequencia(q->candidatos,i+1);
-        //printf("2-%s:%s\n",loginEstudante(e),loginEstudante(aux));
-        if(!strcmp(loginEstudante(e),loginEstudante(aux)))
-            return 1;
-        else
-            return 0;       
+    for(int i=0; i<(tamanhoSequencia(q->candidatos));i++){
+        estudante aux = (estudante) elementoPosSequencia(q->candidatos,(i+1));
+        //printf("AUX:%s",loginEstudante(aux));
+        //printf("HEY:%s\n",loginEstudante(e));
+        if(!strcmp(loginEstudante(e),loginEstudante(aux))){
+            //printf("AAA");
+            return 1;      
+        }
     }
     return 0;
 }
 
 int existeCandidaturasQuarto(quarto q){
     
-    if(tamanhoSequencia(q->candidatos)>0)
+    if(tamanhoSequencia(q->candidatos)>0){
+        //printf("Tamanho:%d\n\n",tamanhoSequencia(q->candidatos));
         return 1;
+    }
     return 0;
+}
+
+void removeCertaCandidaturaQuarto(quarto q,estudante e){
+
+    for(int i=1; i<tamanhoSequencia(q->candidatos);i++){
+        iterador myIt;
+        quarto aux;
+        myIt = iteradorCandidaturas(e,q);
+        while(temSeguinteIterador(myIt)){
+            aux = (quarto) seguinteIterador(myIt);
+            removePosSequencia(aux->candidatos,i);
+        }
+        //destroiIterador(myIt);
+    }
+        /*if(temCandidaturaEstudanteQuarto(q,e)==1 ){
+            printf("BBB%s:%s",loginEstudante(e),universidadeEstudante(e));
+            removePosSequencia(q->candidatos,i+1);
+        }
+        //estudante aux = (estudante) elementoPosSequencia(q->candidatos,(i));
+        */
 }
 
 void removeCandidaturasQuarto(quarto q){
 
-    for(int i=0;i<tamanhoSequencia(q->candidatos);i++){
+    for(int i=1; i<=tamanhoSequencia(q->candidatos);i++)
         removePosSequencia(q->candidatos,i);
-    }
-
+    
 }
 
 iterador daIteradorCandidaturasQuarto(quarto q){
@@ -207,23 +227,3 @@ iterador daIteradorCandidaturasQuarto(quarto q){
     return (myIt);
     
 }
-
-/*
-estudante daOcupanteQuarto(quarto q){
-    return q->ocupante;
-}
-
-void atribuiOcupanteQuarto(quarto q, estudante e){
-    q->ocupante = e;
-}
-
-void retiraCandidaturasQuarto(quarto q){
-    for(int i=0; i<tamanhoSequencia(q->candidatos); i++)
-        removePosSequencia(q->candidatos,i);   
-}
-
-void registaCandidaturaEstudantequarto(quarto q, estudante e){
-    adicionaPosSequencia(q->candidatos,(void*) e, tamanhoSequencia(q->candidatos));
-}
-*/
-//iterador quartos

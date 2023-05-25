@@ -41,8 +41,13 @@ int temCandidaturaEstudanteQuarto(quarto q, estudante e);
 
 int existeCandidaturasQuarto(quarto q);
 
+/*Retirar da sequencia os estudantes com candidatura*/
 void removeCandidaturasQuarto(quarto q);
 
+
+void removeCertaCandidaturaQuarto(quarto q,estudante e);
+
+/*Iterador com os estudantes que se candidataram a certo quarto*/
 iterador daIteradorCandidaturasQuarto(quarto q);
 
 #endif // _H_quarto

@@ -29,10 +29,15 @@ int nrCandidaturasEstudante(estudante e);
 
 int registaCandidaturaEstudante(estudante e, quarto q);
 
+/*Vou ao ao vetor de candidaturas do estudante tirar o quarto*/
 void retiraCandidaturaEstudante(estudante e, quarto q);
 
 int estudanteTemCandidaturaQuarto(estudante e, quarto q);
 
-void eliminaCandidaturasEstudante(estudante e, quarto q);
+void eliminaCandidaturasEstudante(estudante e);
+
+void subtraiCandidaturas(estudante e);
+
+iterador iteradorCandidaturas(estudante e, quarto q);
 
 #endif // _H_ESTUDANTE

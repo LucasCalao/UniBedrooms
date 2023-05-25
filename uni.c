@@ -114,7 +114,9 @@ void insereCandidaturaUni(unibedrooms ub, char *codigo, char *login){
     quarto q = daQuartoUniBedrooms(ub,codigo);
     estudante e = daEstudanteUniBedrooms(ub,login);
 
+
     criaCandidaturaQuarto(q,e);
+    //printf("ZZZZ\n");
     registaCandidaturaEstudante(e,q);
 
 }
@@ -128,14 +130,18 @@ int temCandidaturasAtivas(unibedrooms ub, char *codigo){
 
 int temCandidaturaEstudanteQuartoUni(unibedrooms ub, char *codigo, char *login){
 
-    if(!existeEstudante(ub,codigo))
+    if(!existeEstudante(ub,login)){
+        //printf("BBBBBB\n");
         return 0;
+        
+    }
     else{
         quarto q = daQuartoUniBedrooms(ub,codigo);
         estudante e = daEstudanteUniBedrooms(ub,login);
-
-        if(temCandidaturaEstudanteQuarto(q,e) == 1)
+        //printf("AAAAAAA\n");
+        if(temCandidaturaEstudanteQuarto(q,e) == 1){
             return 1;
+        }
         else if(temCandidaturaEstudanteQuarto(q,e) == 0)
             return 0;
     }
@@ -164,6 +170,15 @@ void removeQuartoUni(unibedrooms ub, char *codigo){
 
     removeElemDicionario(ub->quartos,codigo);
 
+}
+
+char *loginQuartoUni(unibedrooms ub, char *codigo){
+
+    if(existeQuarto(ub,codigo)){
+        quarto q = daQuartoUniBedrooms(ub,codigo);
+        return loginQuarto(q);
+    }
+    return "nada";
 }
 
 int existeLoginQuartoUni(unibedrooms ub, char *codigo,char *login){
